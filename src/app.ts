@@ -24,7 +24,7 @@ if (!DYNAMODB_TABLE) {
 import HyperExpress from 'hyper-express';
 import { CoinbaseWebSocket } from './websocket/CoinbaseWebSocket';
 
-interface OptimusResponse {
+interface asaRacingResponse {
     message: string;
     timestamp: string;
 }
@@ -55,8 +55,8 @@ class App {
             await res.send('Server is running!');
         });
 
-        this.server.get('/optimus', async (_req: HyperExpress.Request, res: HyperExpress.Response) => {
-            const response: optimusResponse = {
+        this.server.get('/asaRacing', async (_req: HyperExpress.Request, res: HyperExpress.Response) => {
+            const response: asaRacingResponse = {
                 message: 'Hello from HyperExpress!',
                 timestamp: new Date().toISOString()
             };
@@ -103,7 +103,7 @@ class App {
             await this.server.listen(this.port);
             console.log(`Server is running at http://localhost:${this.port} in ${process.env.NODE_ENV || 'development'} mode`);
             console.log(`Region: ${AWS_REGION}, DynamoDB Table: ${DYNAMODB_TABLE}`);
-            console.log(`Try: http://localhost:${this.port}/optimus);
+            console.log(`Try: http://localhost:${this.port}/asaRacing);
 
             await this.wsClient.connect();
             console.log('WebSocket client initialized');
